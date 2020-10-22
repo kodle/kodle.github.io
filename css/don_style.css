@@ -1,0 +1,27 @@
+body {
+    background-color: black
+}
+
+h1 {
+    font-family: 'Mansalva', cursive;
+    color: #ffffff;
+}
+
+h2 {
+    font-family: 'Mansalva', cursive;
+    font-size: -75%;
+    text-align: center;
+}
+
+a { 
+    color: #ffffff;
+}
+
+.center { 
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
