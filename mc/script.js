@@ -11,7 +11,9 @@ $.getJSON(url, function(r) {
  }
 var pl = '';
  if(r.players.sample.length > 0 ){ pl = '<br>OP: '+r.players.sample[0].name;  }
-  $('#rest').html('<br><b>Joueurs en ligne:</b> '+r.players.online+"</br><b>IP:</b> mc.kodle.xyz"+"</br>"+"<a href=\"https://discord.gg/BERvkAF\"><i class=\"fab fa-discord\"></i></a>");
+  $('#rest').html('<br><b>Joueurs en ligne:</b> '+r.players.online+"</br><b>IP:</b> mc.kodle.xyz"+"</br>"+"<a href=\"https://discord.gg/BERvkAF\"><i class=\"fab fa-discord\"></i></a><a href=\"http://www.kodle.xyz/don\"><i class=\"fab fa-paypal\"></i></a>");
  $('#favicon').attr('src', r.favicon);
 
 });
+
+// r.description.replace(/§(.+?)/gi, '')+
