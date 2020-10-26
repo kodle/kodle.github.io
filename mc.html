@@ -2,9 +2,26 @@
   <title>Compagnie</title>
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
   <link rel="icon" href="https://raw.githubusercontent.com/kodle/kodle.github.io/master/images/favicon.ico"/>
-  <script type="text/javascript" src="mc/script.js"></script>
   <link rel="stylesheet" type="text/css" href="mc/style.css" />
-  <script src="https://kit.fontawesome.com/ee01ad440b.js"></script>
+
+  <script>
+    $(function() {
+      var ip = "mc.kodle.xyz";
+      var players = $("#players");
+    
+      getStatus(ip, players);
+    });
+    
+    function getStatus(ip, identifier) {
+       $.getJSON("https://us.mc-api.net/v3/server/info/" + ip + "/json", function(json){
+        if(json.players.online !== undefined) {
+          $(identifier).html(json.players.online);
+        } else {
+          $(identifier).html('<i class="fa fa-cog fa-spin"></i>');
+        }
+      });
+    }
+    </script>
 
 </head>
 
@@ -14,6 +31,8 @@
 
     <h2>mc.kodle.xyz</h2>
     </div>
-    <div id="rest">Chargement ...</div>
+
+    <span id="players"><i class="fa fa-cog fa-spin"></i></span>
+
   </div>
 </body>

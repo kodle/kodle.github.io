@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Compagnie</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="jquery-1.11.0.min.js"></script>    
+    <script>
+        $(function() {
+          var ip = "mc.kodle.xyz";
+          var players = $("#players");
+        
+          getStatus(ip, players);
+        });
+        
+        function getStatus(ip, identifier) {
+           $.getJSON("https://us.mc-api.net/v3/server/info/" + ip + "/json", function(json){
+            if(json.players.online !== undefined) {
+              $(identifier).html(json.players.online);
+            } else {
+              $(identifier).html('<i class="fa fa-cog fa-spin"></i>');
+            }
+          });
+        }
+    </script>
+</head>
+<body>
+    <h1><span id="players"><i class="fa fa-cog fa-spin"></i></span> players</h1>
+</body>
+</html>
