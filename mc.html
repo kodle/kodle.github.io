@@ -3,26 +3,21 @@
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
   <link rel="icon" href="https://raw.githubusercontent.com/kodle/kodle.github.io/master/images/favicon.ico"/>
   <link rel="stylesheet" type="text/css" href="mc/style.css" />
-
+  <script src="https://kit.fontawesome.com/ee01ad440b.js"></script>
   <script>
-    $(function() {
-      var ip = "mc.kodle.xyz";
-      var players = $("#players");
-    
-      getStatus(ip, players);
-    });
-    
-    function getStatus(ip, identifier) {
-       $.getJSON("https://us.mc-api.net/v3/server/info/" + ip + "/json", function(json){
-        if(json.players.online !== undefined) {
-          $(identifier).html(json.players.online);
-        } else {
-          $(identifier).html('<i class="fa fa-cog fa-spin"></i>');
-        }
-      });
-    }
-    </script>
+    // based on a pen by @robinselmer
+    var url = "https://api.minetools.eu/ping/mc.kodle.xyz";
 
+    $.getJSON(url, function(r) {
+    if(r.error){
+        $('#rest').html('Serveur hors ligne');
+      return false;
+    }
+    var pl = '';
+      $('#favicon').attr('src', r.favicon);
+      $('#rest').html('<i class="fa fa-cog fa-spin"></i> '+r.players.online+' joueurs en ligne'+'<br/><i class="fab fa-discord"></i><a href="https://discord.gg/dUgPudj"> La Compagnie</a>'+'<br/><i class="fas fa-coins"></i><a href="https://www.paypal.com/donate?token=vdcZkafmRc64P7QT4OBY51KXTxtCPsF__TDjuNdxAZaWx4NpKmKel6LWGi0Ke-CYjFhbijN1WHeO0Drw"> Faire un don</a>');
+    });
+  </script>
 </head>
 
 <body>
@@ -31,8 +26,6 @@
 
     <h2>mc.kodle.xyz</h2>
     </div>
-
-    <span id="players"><i class="fa fa-cog fa-spin"></i></span>
-
+    <div id="rest">Chargement ...</div>
   </div>
 </body>
