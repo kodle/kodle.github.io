@@ -1,5 +1,5 @@
 //based on a pen by @robinselmer
-var url = "https://api.minetools.eu/ping/mc.kodle.xyz";
+var url = "https://api.minetools.eu/ping/54.36.126.210:25569";
 
 //https://mcapi.us/server/status?ip=
 
